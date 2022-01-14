@@ -641,7 +641,7 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div>  
 
 </x-footer>
 
