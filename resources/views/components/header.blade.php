@@ -4,7 +4,7 @@
         <div class="container">
             <nav class="navbar py-2 navbar-expand-lg flex justify-between items-center relative duration-300">
                 <a class="navbar-brand" href="index.html">
-                    <img src="img/logo.svg" alt="Logo">
+                    <img src="img/HS-blog-logo.png" width="200" height="50" alt="Logo">
                 </a>
                 <button class="navbar-toggler focus:outline-none block lg:hidden" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"

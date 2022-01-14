@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!--====== Favicon Icon ======-->
-    <link rel="shortcut icon" href="img/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="img/HS-blog-icon.png" type="image/png">
 
     <title>Shine - TailwindCSS Startup and SaaS Landing Page Template</title>
 
@@ -586,7 +586,7 @@
         <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 wow fadeInUp" data-wow-delay="0.2s">
             <div class="mx-3 mb-8">
                 <div class="footer-logo mb-3">
-                    <img src="img/logo.svg" alt="">
+                    <img src="img/HS-blog-logo.png" alt="">
                 </div>
                 <p class="text-gray-300">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam
                     excepturi quasi, ipsam
@@ -641,7 +641,7 @@
                 </ul>
             </div>
         </div>
-    </div>  
+    </div>
 
 </x-footer>
 
