@@ -428,13 +428,21 @@
 <body class="antialiased">
     <div
         class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-        <x-header>
+        <x-header></x-header>
 
-        </x-header>
 
 
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-            Best Blog Ever
+            <b> Most Recent Posts </b>
+            @foreach ($posts as $post)
+                <li>
+                    <span class="text-gray-800">{{ $post->title }}</span>
+
+                    <span>{{ $post->text }}</span>
+                </li>
+
+                Author: {{ $post->name }}
+            @endforeach
         </div>
     </div>
     <script src="assets/js/wow.js"></script>
