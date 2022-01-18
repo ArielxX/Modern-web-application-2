@@ -13,6 +13,6 @@ class WelcomeController extends Controller
             ->join('users', 'users.id', '=', 'author_id')
             ->get();
 
-        return view("welcome", compact('posts'));
+        return view('welcome', compact('posts'));
     }
 }
