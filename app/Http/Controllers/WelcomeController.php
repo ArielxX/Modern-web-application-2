@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
@@ -13,6 +14,8 @@ class WelcomeController extends Controller
             ->join('users', 'users.id', '=', 'author_id')
             ->get();
 
-        return view('welcome', compact('posts'));
+        $tags = Tag::all();
+
+        return view('welcome', compact('posts', 'tags'));
     }
 }

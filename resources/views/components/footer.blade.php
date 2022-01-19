@@ -7,10 +7,12 @@
                 </div>
             </div>
             <div>
-                And some legal mentions
+                This is an important legal mention.
+
+                So, be careful ;)
             </div>
             <div>
-                And typically some contact info
+                And this is our contact info :P
             </div>
 
         </div>

@@ -18,6 +18,6 @@ class DatabaseSeeder extends Seeder
     {
         $users = User::factory(50)->create();
         $posts = Post::factory(30)->create();
-        $tags = Tag::factory(10)->create();
+        $tags = Tag::factory(70)->create();
     }
 }
