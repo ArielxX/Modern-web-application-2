@@ -16,7 +16,7 @@ class PostFactory extends Factory
         return [
             'title' => $this->faker->sentence,
             'abstract' => $this->faker->paragraph,
-            'text' => "
+            'text' => '
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sagittis, orci facilisis mollis pretium, metus urna tempus sem, vitae accumsan eros nunc ut eros. Maecenas sit amet dolor risus. Mauris ultrices sit amet ante in euismod. Vivamus facilisis nibh arcu, in dapibus ante scelerisque ut. Etiam vitae lobortis dui, sed hendrerit tortor. Vestibulum ultricies lobortis nunc at molestie. Curabitur scelerisque sed sem ut pharetra.
 
@@ -36,7 +36,7 @@ Mauris eleifend neque mauris, quis dapibus felis efficitur ut. Vestibulum alique
 
 Aenean et aliquam turpis. Morbi porttitor pulvinar auctor. Quisque pretium placerat commodo. Suspendisse ac neque blandit, consequat sapien vitae, ullamcorper sapien. Morbi eget magna laoreet, elementum libero ac, tempus sem. Ut quis urna vulputate massa iaculis ornare sit amet sit amet nunc. Mauris sed commodo libero.
 
-Cras id tempor ante. Morbi sit amet pulvinar nulla. Sed aliquam nec mi eu faucibus. Nunc sed finibus dolor, et facilisis justo. Vestibulum bibendum rhoncus eros a tincidunt. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam tristique rhoncus posuere. Sed sed lorem elementum, tristique nunc ut, dapibus tellus.",
+Cras id tempor ante. Morbi sit amet pulvinar nulla. Sed aliquam nec mi eu faucibus. Nunc sed finibus dolor, et facilisis justo. Vestibulum bibendum rhoncus eros a tincidunt. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam tristique rhoncus posuere. Sed sed lorem elementum, tristique nunc ut, dapibus tellus.',
             'author_id' => $this->faker->numberBetween(1, 50),
         ];
     }
