@@ -11,7 +11,6 @@
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
-            <x-honeypot />
 
             <!-- Name -->
             <div>
