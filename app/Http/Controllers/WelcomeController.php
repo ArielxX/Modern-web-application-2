@@ -11,7 +11,7 @@ class WelcomeController extends Controller
     public function __invoke(Request $request)
     {
         $posts = Post::orderBy('posts.id', 'desc')->take(5)
-            ->join('users', 'users.id', '=', 'author_id')
+            ->with('author')
             ->get();
 
         $tags = Tag::all();

@@ -5,26 +5,28 @@
             <b> Most Recent Posts </b>
             @foreach ($posts as $post)
                 <div style='border: 1px solid black; border-radius: 4px; margin-top: 20px'>
-                    <div style="padding: 15px">
+                    <div style=" padding: 15px">
                         <div>
-                            <b>
-                                <span class="text-gray-800" style=>{{ $post->title }}</span>
-                            </b>
+                            <a href="/posts/{{ $post->id }}">
+                                <b>
+                                    <span class=" text-gray-800" style=>{{ $post->title }}</span>
+                                </b>
+                            </a>
                         </div>
 
                         <div>
-                            <span>{{ $post->text }}</span>
+                            <span>{{ $post->abstract }}</span>
                         </div>
 
                         <div style="padding-top: 10px">
-                            Author: {{ $post->name }}
+                            Author: {{ $post->author->name }}
                         </div>
                     </div>
                 </div>
             @endforeach
 
             <div style="padding: 20px">
-                <a href="/" style="color: blue">See all >></a>
+                <a href="/posts" style="color: blue">See all >></a>
             </div>
         </div>
 

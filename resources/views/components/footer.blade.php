@@ -3,7 +3,7 @@
         <div class="block p-5 max-w-6xl mx-auto z-0 min-h-full flex flex-row justify-between">
             <div>
                 <div class="footer-logo mb-3">
-                    <img src="img/HS-blog-logo.png" width="150" height="40" alt="Logo">
+                    <img src="/img/HS-blog-logo.png" width="150" height="40" alt="Logo">
                 </div>
             </div>
             <div>

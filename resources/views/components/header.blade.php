@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>HS Blog</title>
 
+        <link rel="icon" type="image/png" href="{{ asset('/img/HS-blog-icon.png') }}">
+
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
@@ -19,21 +21,16 @@
     <div class="block w-100 bg-white shadow z-50">
 
         <div class="max-w-6xl mx-auto py-4  text-gray-600 text-sm  flex justify-between">
-            <img src="img/HS-blog-logo.png" width="200" height="50" alt="Logo">
+            <img src="/img/HS-blog-logo.png" width="200" height="50" alt="Logo">
 
             <div class="px-6 flex flex-row justify-center gap-x-6">
-                <a href="" class="hover:underline decoration-pink-500 decoration-2">Home</a>
-                <a href="" class="hover:underline decoration-pink-500 decoration-2">Posts</a>
+                <a href="/" class="hover:underline decoration-pink-500 decoration-2">Home</a>
+                <a href="/posts" class="hover:underline decoration-pink-500 decoration-2">Posts</a>
                 <a href="" class="hover:underline decoration-pink-500 decoration-2">Authors</a>
             </div>
             <div class="px-6">
                 @if (Route::has('login'))
                     @auth
-                        {{-- <a href="{{ route('logout') }}" class="hover:underline">Logout</a> --}}
-                        {{-- <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                            {{ __('Dashboard') }}
-                        </h2> --}}
-                        {{-- <x-slot name="header" /> --}}
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
                             <x-dropdown align="right" width="48">
                                 <x-slot name="trigger">
@@ -57,8 +54,9 @@
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
 
-                                        <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
-                                                    this.closest('form').submit();">
+                                        <x-dropdown-link :href="route('logout')"
+                                            onclick="event.preventDefault();
+                                                                                                                    this.closest('form').submit();">
                                             {{ __('Log Out') }}
                                         </x-dropdown-link>
                                     </form>
