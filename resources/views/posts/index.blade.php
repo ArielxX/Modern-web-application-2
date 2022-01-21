@@ -1,7 +1,7 @@
 <x-site-layout>
     <div class="flex flex-col my-16 max-w-4xl mx-auto">
 
-        <div class="flex justify-between mb-2 pr-6">
+        <div class="flex justify-between mb-2 pr-6" style="padding: 30px">
             <h2 class="text-xl font-semibold">Posts</h2>
             <a href="{{ route('posts.create') }}" class="text-green-600 hover:text-green-900">Create new</a>
         </div>
@@ -39,6 +39,19 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         <a href="{{ route('posts.edit', ['post' => $post]) }}"
                                             class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                        <a href="{{ route('posts.destroy', ['post' => $post]) }}"
+                                            class="text-indigo-600 hover:text-indigo-900"
+                                            style="padding-left: 15px; color: red"
+                                            href="{{ route('posts.destroy', ['post' => $post]) }}"
+                                            onclick="event.preventDefault(); document.getElementById('delete-form-{{ $post->id }}').submit(); return confirm('Are you sure you want to remove this post?')">
+                                            delete
+                                        </a>
+                                        <form id="delete-form-{{ $post->id }}"
+                                            action="{{ route('posts.destroy', ['post' => $post]) }}" method="POST"
+                                            style="display: none;">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
