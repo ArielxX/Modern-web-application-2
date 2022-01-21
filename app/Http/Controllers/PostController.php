@@ -7,6 +7,7 @@ use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
@@ -47,6 +48,8 @@ class PostController extends Controller
 
         $post->update($request->validated());
 
+        Gate::authorize('manage-post', $post);
+
         if ($request->hasFile('image')) {
             $post->addMediaFromRequest('image')->toMediaCollection('images');
         }
@@ -54,9 +57,13 @@ class PostController extends Controller
         return redirect()->route('posts.index');
     }
 
-    public function destroy(Int $postId)
+    public function destroy(UpdatePostRequest $request, Int $postId)
     {
+        ray($request, $request->validated());
+
         $post = Post::find($postId);
+        Gate::authorize('manage-post', $post);
+
         $post->delete();
 
         return redirect()->route('posts.index')->with('success', 'Post deleted successfully');;
