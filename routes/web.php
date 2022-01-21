@@ -25,4 +25,4 @@ Route::get('/dashboard', function () {
 Route::resource('posts', PostController::class);
 Route::resource('users', UserController::class);
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

@@ -57,13 +57,13 @@ class PostController extends Controller
         return redirect()->route('posts.index');
     }
 
-    public function destroy(Int $postId)
+    public function destroy(int $postId)
     {
         $post = Post::find($postId);
         Gate::authorize('manage-post', $post);
 
         $post->delete();
 
-        return redirect()->route('posts.index')->with('success', 'Post deleted successfully');;
+        return redirect()->route('posts.index')->with('success', 'Post deleted successfully');
     }
 }
