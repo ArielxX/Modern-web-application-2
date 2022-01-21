@@ -28,7 +28,9 @@
             </div>
 
             <!-- main content -->
-            {{ $slot }}
+            <div style="min-height: 360px">
+                {{ $slot }}
+            </div>
         </div>
     </div>
 

@@ -26,7 +26,7 @@
             <div class="px-6 flex flex-row justify-center gap-x-6">
                 <a href="/" class="hover:underline decoration-pink-500 decoration-2">Home</a>
                 <a href="/posts" class="hover:underline decoration-pink-500 decoration-2">Posts</a>
-                <a href="" class="hover:underline decoration-pink-500 decoration-2">Authors</a>
+                <a href="/users" class="hover:underline decoration-pink-500 decoration-2">Users</a>
             </div>
             <div class="px-6">
                 @if (Route::has('login'))
@@ -56,7 +56,7 @@
 
                                         <x-dropdown-link :href="route('logout')"
                                             onclick="event.preventDefault();
-                                                                                                                    this.closest('form').submit();">
+                                                                                                                            this.closest('form').submit();">
                                             {{ __('Log Out') }}
                                         </x-dropdown-link>
                                     </form>

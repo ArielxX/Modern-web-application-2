@@ -18,7 +18,8 @@ class PostPolicy
      */
     public function managePost(User $user, Post $post)
     {
-        return $post->author_id === auth()->user()->id
+        return
+            auth()->check() && $post->author_id === auth()->user()->id
             ? Response::allow()
             : Response::deny('You do not own this post.');
     }
