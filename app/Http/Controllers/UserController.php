@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,9 @@ class UserController extends Controller
     public function show(User $user)
     {
         $user->posts = $user->posts();
+        foreach ($user->posts as $post) {
+            $post->tags = Post::find($post->id)->tags()->get();
+        }
 
         return view('users.show', compact('user'));
     }

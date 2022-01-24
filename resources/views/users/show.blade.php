@@ -25,6 +25,10 @@
                                         class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Abstract
                                     </th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Tags
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -37,6 +41,17 @@
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                             {{ $post->abstract }}
+                                        </td>
+
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            @foreach ($post->tags as $tag)
+                                                <a href="/" style="margin-right: 15px">
+                                                    <span class="w3-blue px-2 bg-green-50 text-green-500 rounded-lg"
+                                                        onclick="/">{{ $tag->name }}
+                                                    </span>
+                                                </a>
+                                            @endforeach
+
                                         </td>
                                     </tr>
                                 @endforeach

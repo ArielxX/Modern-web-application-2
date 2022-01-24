@@ -14,6 +14,10 @@ class WelcomeController extends Controller
             ->with('author')
             ->get();
 
+        foreach ($posts as $post) {
+            $post->tags = Post::find($post->id)->tags()->get();
+        }
+
         $tags = Tag::all();
 
         return view('welcome', compact('posts', 'tags'));

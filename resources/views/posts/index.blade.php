@@ -20,7 +20,11 @@
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Author
                                 </th>
-                                <th scope="col" class="relative px-6 py-3">
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Tags
+                                </th>
+                                <th scope="col" class="relative px-6 py-3" style="width: 150px">
                                     <span class="sr-only">Actions</span>
                                 </th>
                             </tr>
@@ -36,6 +40,17 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                         {{ $post->author->name }}
                                     </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        @foreach ($post->tags as $tag)
+                                            <a href="/" style="margin-right: 15px">
+                                                <span class="w3-blue px-2 bg-green-50 text-green-500 rounded-lg"
+                                                    onclick="/">{{ $tag->name }}
+                                                </span>
+                                            </a>
+                                        @endforeach
+
+                                    </td>
+
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         <a href="{{ route('posts.edit', ['post' => $post]) }}"
                                             class="text-indigo-600 hover:text-indigo-900">Edit</a>

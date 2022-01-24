@@ -16,8 +16,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $users = User::factory(50)->create();
-        $posts = Post::factory(30)->create();
+        $users = User::factory(30)->create();
+        $posts = Post::factory(50)->create();
         $tags = Tag::factory(70)->create();
+
+        foreach ($posts as $post) {
+            $range = range(0, 70);
+            $random = random_int(2, 10);
+            $randomTags = collect($range)->shuffle()->slice(0, $random);
+            $userTags = Post::find($randomTags);
+            $post->tags()->attach($userTags);
+        }
     }
 }

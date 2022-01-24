@@ -18,8 +18,19 @@
                             <span>{{ $post->abstract }}</span>
                         </div>
 
-                        <div style="padding-top: 10px">
-                            Author: {{ $post->author->name }}
+                        <div class=" flex flex-row" style="padding-top: 10px">
+                            <div class="w-1/3">
+                                Author: {{ $post->author->name }}
+                            </div>
+                            <div class="w-2/3">
+                                @foreach ($post->tags as $tag)
+                                    <a href="/" style="margin-right: 15px">
+                                        <span class="w3-blue px-2 bg-green-50 text-green-500 rounded-lg"
+                                            onclick="/">{{ $tag->name }}
+                                        </span>
+                                    </a>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>

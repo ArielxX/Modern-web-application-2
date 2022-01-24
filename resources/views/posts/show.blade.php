@@ -5,6 +5,14 @@
     <div style="text-align: center">
         by <b>{{ $post->author->name }}</b>
     </div>
+    <div style="text-align: center">
+        @foreach ($post->tags as $tag)
+            <a href="/" style="margin-right: 15px">
+                <span class="w3-blue px-2 bg-green-50 text-green-500 rounded-lg" onclick="/">{{ $tag->name }}
+                </span>
+            </a>
+        @endforeach
+    </div>
 
     <div style="padding: 50px">
         {{ $post->text }}
