@@ -18,7 +18,7 @@ class WelcomeController extends Controller
             $post->tags = Post::find($post->id)->tags()->get();
         }
 
-        $tags = Tag::all();
+        $tags = Tag::orderBy('name')->get();
 
         return view('welcome', compact('posts', 'tags'));
     }
