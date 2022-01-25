@@ -14,7 +14,7 @@
         @endforeach
     </div>
 
-    <div style="padding: 50px">
+    <div style="white-space: pre-wrap">
         {{ $post->text }}
     </div>
 
