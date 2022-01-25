@@ -4,6 +4,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
+use Spatie\Health\Http\Controllers\HealthCheckResultsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +26,6 @@ Route::get('/dashboard', function () {
 Route::resource('posts', PostController::class);
 Route::resource('users', UserController::class);
 
-require __DIR__.'/auth.php';
+Route::get('health', HealthCheckResultsController::class);
+
+require __DIR__ . '/auth.php';
