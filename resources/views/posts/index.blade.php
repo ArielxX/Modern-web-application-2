@@ -5,6 +5,7 @@
             <h2 class="text-xl font-semibold">Posts</h2>
             <a href="{{ route('posts.create') }}" class="text-green-600 hover:text-green-900">Create new</a>
         </div>
+        <div style="display:flex; justify-content:center; padding-bottom: 20px">{{ $posts->links() }}</div>
 
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -75,5 +76,8 @@
                 </div>
             </div>
         </div>
+
+        <div style="display:flex; justify-content:center; padding-bottom: 20px">{{ $posts->links() }}</div>
+
     </div>
 </x-site-layout>

@@ -13,7 +13,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::with('tags')->get();
+        $posts = Post::with('tags')->paginate();
 
         return view('posts.index', compact('posts'));
     }
