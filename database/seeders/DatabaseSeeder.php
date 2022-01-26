@@ -18,10 +18,17 @@ class DatabaseSeeder extends Seeder
     {
         $users = User::factory(30)->create();
         $posts = Post::factory(50)->create();
-        $tags = Tag::factory(70)->create();
+
+        $amountOfTags = 0;
+
+        for ($i = 0; $i < 70; $i++) {
+            $name = substr(str_shuffle("qwertyuiopasdfghjklzxcvbnm"), 0, rand(3, 10));
+            $tag = Tag::updateOrCreate(['name' => $name]);
+            $amountOfTags = max($amountOfTags, $tag->id);
+        }
 
         foreach ($posts as $post) {
-            $range = range(0, 70);
+            $range = range(0, $amountOfTags);
             $random = random_int(2, 10);
             $randomTags = collect($range)->shuffle()->slice(0, $random);
             $userTags = Post::find($randomTags);
