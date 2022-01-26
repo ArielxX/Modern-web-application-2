@@ -1,6 +1,6 @@
 <x-site-layout>
 
-    <form action="{{ route('users.update', ['user' => $user]) }}" method="user" enctype="multipart/form-data"
+    <form action="{{ route('users.update', ['user' => $user]) }}" method="post" enctype="multipart/form-data"
         class="mb-16 flex">
         @csrf
         @method('put')
