@@ -26,7 +26,7 @@ class UserPolicy
     public function removeUser(User $user)
     {
         return
-            auth()->check() &&  auth()->user()->is_admin
+            auth()->check() && auth()->user()->is_admin
             ? Response::allow()
             : Response::deny('You dont have enough permissions to remove this user. Please contact an admin.');
     }
