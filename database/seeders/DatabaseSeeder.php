@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -34,5 +35,12 @@ class DatabaseSeeder extends Seeder
             $userTags = Post::find($randomTags);
             $post->tags()->attach($userTags);
         }
+
+        $adminUser = User::Create([
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('12345678'),
+            'is_admin' => true
+        ]);
     }
 }
