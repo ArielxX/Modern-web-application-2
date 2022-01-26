@@ -19,8 +19,8 @@ class PostPolicy
     public function managePost(User $user, Post $post)
     {
         return
-            auth()->check() && $post->author_id === auth()->user()->id
+            auth()->check() && ($post->author_id === auth()->user()->id || auth()->user()->is_admin)
             ? Response::allow()
-            : Response::deny('You do not own this post.');
+            : Response::deny('You dont have enough permissions to do the requested action. Please contact an admin.');
     }
 }

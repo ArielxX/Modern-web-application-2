@@ -46,9 +46,8 @@ class PostController extends Controller
     {
         ray($request, $request->validated());
 
-        $post->update($request->validated());
-
         Gate::authorize('manage-post', $post);
+        $post->update($request->validated());
 
         if ($request->hasFile('image')) {
             $post->addMediaFromRequest('image')->toMediaCollection('images');
