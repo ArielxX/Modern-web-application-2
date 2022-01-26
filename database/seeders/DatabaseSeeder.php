@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         $amountOfTags = 0;
 
         for ($i = 0; $i < 70; $i++) {
-            $name = substr(str_shuffle("qwertyuiopasdfghjklzxcvbnm"), 0, rand(3, 10));
+            $name = substr(str_shuffle('qwertyuiopasdfghjklzxcvbnm'), 0, rand(3, 10));
             $tag = Tag::updateOrCreate(['name' => $name]);
             $amountOfTags = max($amountOfTags, $tag->id);
         }
