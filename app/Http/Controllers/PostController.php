@@ -66,6 +66,9 @@ class PostController extends Controller
         Gate::authorize('manage-post', $post);
 
         if ($request->hasFile('image')) {
+            if ($post->getMedia('images')->count() > 0) {
+                $post->deleteMedia($post->media->last()->id);
+            }
             $post->addMediaFromRequest('image')->toMediaCollection('images');
         }
         $request = $request->validated();

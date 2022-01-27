@@ -13,11 +13,13 @@
             </a>
         @endforeach
     </div>
-    <div>
-        @if (($media = $post->getMedia('images'))->count() > 0)
-            <img src={{ $media->first()?->getUrl() }} />
-        @endif
-    </div>
+    @if (($media = $post->getMedia('images'))->count() > 0)
+        <div>
+            <center>
+                <img src={{ $media->first()?->getUrl() }} />
+            </center>
+        </div>
+    @endif
     <div style="white-space: pre-wrap">
         {{ $post->text }}
     </div>
