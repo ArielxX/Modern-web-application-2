@@ -3,9 +3,20 @@
         <div style="font-size: 25px">
             {{ $user->name }}
         </div>
-        <div>
-            Email: <b>{{ $user->email }}</b>
-        </div>
+        @if (auth()->user()->is_admin || auth()->user()->id === $user->id)
+            <div>
+                Email: <b>{{ $user->email }}</b>
+            </div>
+        @endif
+
+        @if (($media = $user->getMedia('avatars'))->count() > 0)
+            <div>
+                <img src={{ $media->first()?->getUrl() }} width="200" height="200" />
+            </div>
+        @else
+            <img src="/img/default_profile_pic.jpg" width="200" height="200">
+        @endif
+
 
         <div>
             <div style="font-size: 20px; padding: 20px">

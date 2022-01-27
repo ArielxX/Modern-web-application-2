@@ -13,6 +13,10 @@ class UserController extends Controller
     public function index()
     {
         $users = User::orderBy('name')->paginate();
+        foreach ($users as $user) {
+            $user->posts = $user->posts();
+            $user->amount = $user->posts->count();
+        }
 
         return view('users.index', compact('users'));
     }
@@ -37,8 +41,8 @@ class UserController extends Controller
         Gate::authorize('edit-user', $user);
         $user->update($request->validated());
 
-        if ($request->hasFile('image')) {
-            $user->addMediaFromRequest('image')->toMediaCollection('images');
+        if ($request->hasFile('avatar')) {
+            $user->addMediaFromRequest('avatar')->toMediaCollection('avatars');
         }
 
         return redirect()->route('users.index');

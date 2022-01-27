@@ -1,6 +1,6 @@
 <x-site-layout>
 
-    <form action="{{ route('posts.store') }}" method="post" class="mb-16 flex">
+    <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data" class="mb-16 flex">
         @csrf
 
         <div class="w-2/3" style="padding: 20px">
@@ -8,7 +8,9 @@
             <x-textarea name="abstract" />
             <x-textarea name="text" required />
 
-            <div style="align-items: left">
+            <input type="file" name="image">
+
+            <div style="align-items: left; padding-top: 15px">
                 <h2>Add Tags</h2>
                 <fieldset>
                     @if (sizeof($errors) > 0)

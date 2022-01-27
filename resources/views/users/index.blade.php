@@ -12,6 +12,8 @@
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-100">
                             <tr>
+                                <th>
+                                </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Name
@@ -28,6 +30,15 @@
                         <tbody>
                             @foreach ($users as $user)
                                 <tr class="@if ($loop->even) bg-gray-50 @else bg-white @endif">
+                                    <td>
+                                        @if (($media = $user->getMedia('avatars'))->count() > 0)
+                                            <div>
+                                                <img src={{ $media->first()?->getUrl() }} width="30" height="30" />
+                                            </div>
+                                        @else
+                                            <img src="/img/default_profile_pic.jpg" width="30" height="30">
+                                        @endif
+                                    </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                         <a href="/users/{{ $user->id }}">
                                             {{ $user->name }}

@@ -9,7 +9,11 @@
             <x-text name="name" :value="$user->name" required />
             <x-text name="abstract" :value="$user->email" />
 
-            <input type="file" name="avatar">
+            <div style="padding-top: 15px">
+                <label for="files" class="btn">Upload new avatar</label>
+                <input type="file" name="avatar">
+            </div>
+            </br>
 
             <button type="submit"
                 class="mt-4 px-4 py-2 bg-blue-500 rounded hover:bg-blue-600 text-white float-right">Save</button>
