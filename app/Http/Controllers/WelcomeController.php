@@ -10,15 +10,29 @@ class WelcomeController extends Controller
 {
     public function __invoke(Request $request)
     {
-        $posts = Post::orderBy('posts.id', 'desc')->take(5)
-            ->with('author')
-            ->get();
+        $ttl = config('app.welcome_cache_ttl');
 
-        foreach ($posts as $post) {
-            $post->tags = Post::find($post->id)->tags()->get();
-        }
+        $posts = cache()->remember(
+            "welcome_posts",
+            $ttl,
+            function () {
+                $posts = Post::orderBy('posts.id', 'desc')->take(5)
+                    ->with('author')
+                    ->get();
+                foreach ($posts as $post) {
+                    $post->tags = Post::find($post->id)->tags()->get();
+                }
+                return $posts;
+            }
+        );
 
-        $tags = Tag::orderBy('name')->get();
+        $tags = cache()->remember(
+            "welcome_tags",
+            $ttl,
+            function () {
+                return Tag::orderBy('name')->get();
+            }
+        );
 
         return view('welcome', compact('posts', 'tags'));
     }

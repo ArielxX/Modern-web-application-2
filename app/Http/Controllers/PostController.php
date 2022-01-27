@@ -33,7 +33,7 @@ class PostController extends Controller
 
         foreach ($tags as $tagName) {
             $tag = Tag::updateOrCreate(['name' => $tagName]);
-            if (! in_array($tag->id, $tagList)) {
+            if (!in_array($tag->id, $tagList)) {
                 array_push($tagList, $tag->id);
             }
         }
@@ -42,6 +42,9 @@ class PostController extends Controller
         $post = Post::create($request);
 
         $post->tags()->attach($tagList);
+
+        cache()->forget('welcome_posts');
+        cache()->forget('welcome_tags');
 
         return redirect()->route('posts.index');
     }
@@ -73,7 +76,7 @@ class PostController extends Controller
 
         foreach ($tags as $tagName) {
             $tag = Tag::updateOrCreate(['name' => $tagName]);
-            if (! in_array($tag->id, $tagList)) {
+            if (!in_array($tag->id, $tagList)) {
                 array_push($tagList, $tag->id);
             }
         }
@@ -81,6 +84,9 @@ class PostController extends Controller
         $post->update($request);
         $post->tags()->detach();
         $post->tags()->attach($tagList);
+
+        cache()->forget('welcome_posts');
+        cache()->forget('welcome_tags');
 
         return redirect()->route('posts.index');
     }
