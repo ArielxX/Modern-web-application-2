@@ -1,4 +1,10 @@
 <x-site-layout>
+    <div style="text-align: right">
+        @if (auth()->check() && (auth()->user()->is_admin || auth()->user()->id === $user->id))
+            <a href="/posts/{{ $post->id }}/edit" class="text-green-600 hover:text-green-900"
+                style="margin-right: 20px; font-size: 15px">Edit</a>
+        @endif
+    </div>
     <div style="font-size: 40px; padding-top: 30px; text-align: center">
         {{ $post->title }}
     </div>

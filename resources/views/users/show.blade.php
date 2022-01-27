@@ -1,9 +1,15 @@
 <x-site-layout>
     <div style=" padding: 30px">
-        <div style="font-size: 25px">
-            {{ $user->name }}
+        <div class="flex justify-between mb-2 pr-6" style="padding: 30px">
+            <h2 class="text-xl font-semibold">{{ $user->name }}</h2>
+            <div>
+                @if (auth()->check() && (auth()->user()->is_admin || auth()->user()->id === $user->id))
+                    <a href="/users/{{ $user->id }}/edit" class="text-green-600 hover:text-green-900"
+                        style="margin-right: 20px; font-size: 15px">Edit</a>
+                @endif
+            </div>
         </div>
-        @if (auth()->user()->is_admin || auth()->user()->id === $user->id)
+        @if (auth()->check() && (auth()->user()->is_admin || auth()->user()->id === $user->id))
             <div>
                 Email: <b>{{ $user->email }}</b>
             </div>
