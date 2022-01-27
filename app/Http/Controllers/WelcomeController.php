@@ -13,7 +13,7 @@ class WelcomeController extends Controller
         $ttl = config('app.welcome_cache_ttl');
 
         $posts = cache()->remember(
-            "welcome_posts",
+            'welcome_posts',
             $ttl,
             function () {
                 $posts = Post::orderBy('posts.id', 'desc')->take(5)
@@ -22,12 +22,13 @@ class WelcomeController extends Controller
                 foreach ($posts as $post) {
                     $post->tags = Post::find($post->id)->tags()->get();
                 }
+
                 return $posts;
             }
         );
 
         $tags = cache()->remember(
-            "welcome_tags",
+            'welcome_tags',
             $ttl,
             function () {
                 return Tag::orderBy('name')->get();
