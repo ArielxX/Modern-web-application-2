@@ -4,60 +4,79 @@
 
 It's a simple blog to use inside the Harbour.Space University
 
-<!-- ## Description
+## Description
 
-An in-depth paragraph about your project and overview of use. -->
+the repository responds to the course project related to the subject [Modern Web Application II](https://harbour.space/computer-science/courses/modern-web-application-2-431) course at [Harbour.Space University](https://harbour.space) in January 2022.
 
 ## Getting Started
 
-### Dependencies
-
--   Docker composer
+This is a standard Laravel project. All dependencies are listed in <code>composer.json</code>.
 
 ### Installing
 
--   Install laravel by using docker composer
--   Use composer also to install all the dependencies
+The standard way of installing a Laravel application suffices
 
-<!-- ### Executing program
-
--   How to run the program
--   Step-by-step bullets -->
-
-<!-- ```
-code blocks for commands
-``` -->
-
-<!-- ## Help
-
-Any advise for common problems or issues.
+Clone the repository
 
 ```
-command to run if program contains helper info
-``` -->
+git clone https://github.com/ArielxX/Modern-web-application-2
+```
+
+Go into the app directory & install composer dependencies
+
+```
+composer install
+```
+
+Copy <code>.env.example</code> to <code>.env</code> and make sure to set the application name, application url and database parameters.
+
+Set the application key
+
+```
+php artisan key:generate
+```
+
+Migrate so the tables are created
+
+```
+php artisan migrate
+```
+
+If wanted, you can seed the app with some test data
+
+```
+php artisan db:seed
+```
+
+Install npm dependencies and compile assets
+
+```
+npm install && npm run dev
+```
+
+### Executing the program
+
+There are three levels of access:
+
+-   **Browsing** the site: go to the main domain of the site and start browsing.
+-   **User functions**: create an account and/or login to get access to the user functions. Now it is possible to register for posts.
+-   **Admin functions**: set the "is_admin" property of a user to 1. Once you have an admin, you can make other users admin as well through the website interface
 
 ## Authors
 
-<a href="https://github.com/ArielxX" target="_blank">Ariel Cruz</a>
+Ariel Cruz
 
-<!-- ## Version History
+-   [ArielxX](https://github.com/ArielxX)
 
--   0.2
-    -   Various bug fixes and optimizations
-    -   See [commit change]() or See [release history]()
--   0.1
-    -   Initial Release -->
+## Version History
+
+No formal versioning is used in this project.
 
 ## License
 
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
+This project is [copyleft](https://en.wikipedia.org/wiki/Copyleft) protected.
 
 ## Acknowledgments
 
-Inspiration, code snippets, etc.
-
--   [awesome-readme](https://github.com/matiassingers/awesome-readme)
--   [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
--   [dbader](https://github.com/dbader/readme-template)
--   [zenorocha](https://gist.github.com/zenorocha/4526327)
--   [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
+-   Thank you to [Harbour.Space University](https://harbour.space) for organising the Modern Web Application II course.
+-   And thank you very much to Nico ([ndeblauw](https://github.com/ndeblauw)) for this amazing course.
