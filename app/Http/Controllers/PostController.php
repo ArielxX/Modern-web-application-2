@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreatePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -26,8 +27,21 @@ class PostController extends Controller
     public function store(CreatePostRequest $request)
     {
         $request = $request->validated();
+        $tags = $request['tags'];
+        unset($request['tags']);
+        $tagList = [];
+
+        foreach ($tags as $tagName) {
+            $tag = Tag::updateOrCreate(['name' => $tagName]);
+            if (!in_array($tag->id, $tagList)) {
+                array_push($tagList, $tag->id);
+            }
+        }
+
         $request['author_id'] = Auth::user()->id;
         $post = Post::create($request);
+
+        $post->tags()->attach($tagList);
 
         return redirect()->route('posts.index');
     }

@@ -1650,3 +1650,8 @@ select {
             var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
     }
 }
+
+.error_input {
+    color: red;
+    font-size: small;
+}

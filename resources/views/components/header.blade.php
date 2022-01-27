@@ -15,6 +15,8 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="{{ asset('js/tag-form.js') }}"></script>
+
     </head>
 
 
@@ -56,7 +58,7 @@
 
                                         <x-dropdown-link :href="route('logout')"
                                             onclick="event.preventDefault();
-                                                                                                                            this.closest('form').submit();">
+                                                                                                                                                                    this.closest('form').submit();">
                                             {{ __('Log Out') }}
                                         </x-dropdown-link>
                                     </form>
