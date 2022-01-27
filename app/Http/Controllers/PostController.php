@@ -61,11 +61,26 @@ class PostController extends Controller
         ray($request, $request->validated());
 
         Gate::authorize('manage-post', $post);
-        $post->update($request->validated());
 
         if ($request->hasFile('image')) {
             $post->addMediaFromRequest('image')->toMediaCollection('images');
         }
+        $request = $request->validated();
+
+        $tags = $request['tags'];
+        unset($request['tags']);
+        $tagList = [];
+
+        foreach ($tags as $tagName) {
+            $tag = Tag::updateOrCreate(['name' => $tagName]);
+            if (!in_array($tag->id, $tagList)) {
+                array_push($tagList, $tag->id);
+            }
+        }
+
+        $post->update($request);
+        $post->tags()->detach();
+        $post->tags()->attach($tagList);
 
         return redirect()->route('posts.index');
     }

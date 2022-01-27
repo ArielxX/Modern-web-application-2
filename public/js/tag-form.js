@@ -28,6 +28,7 @@ function addFileField() {
 }
 
 function removeTag(clicked_id) {
+    // alert($clicked_id);
     var tag = document.getElementById("tag" + clicked_id);
     var x = document.getElementById(clicked_id);
     var line = document.getElementById("line" + clicked_id);
