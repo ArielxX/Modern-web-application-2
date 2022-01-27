@@ -3,7 +3,9 @@
 
         <div class="flex justify-between mb-2 pr-6" style="padding: 30px">
             <h2 class="text-xl font-semibold">Posts</h2>
-            <a href="{{ route('posts.create') }}" class="text-green-600 hover:text-green-900">Create new</a>
+            @if (auth()->check() && auth()->user()->is_admin)
+                <a href="{{ route('posts.create') }}" class="text-green-600 hover:text-green-900">Create new</a>
+            @endif
         </div>
         <div style="display:flex; justify-content:center; padding-bottom: 20px">{{ $posts->links() }}</div>
 
@@ -25,9 +27,11 @@
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Tags
                                 </th>
-                                <th scope="col" class="relative px-6 py-3" style="width: 150px">
-                                    <span class="sr-only">Actions</span>
-                                </th>
+                                @if (auth()->check() && auth()->user()->is_admin)
+                                    <th scope="col" class="relative px-6 py-3" style="width: 150px">
+                                        <span class="sr-only">Actions</span>
+                                    </th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -52,23 +56,26 @@
 
                                     </td>
 
-                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <a href="{{ route('posts.edit', ['post' => $post]) }}"
-                                            class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                    @if (auth()->check() && auth()->user()->is_admin)
 
-                                        <a href="{{ route('posts.destroy', ['post' => $post]) }}"
-                                            class="text-indigo-600 hover:text-indigo-900"
-                                            style="padding-left: 15px; color: red"
-                                            onclick="event.preventDefault(); document.getElementById('delete-form-{{ $post->id }}').submit(); return confirm('Are you sure you want to remove this post?')">
-                                            delete
-                                        </a>
-                                        <form id="delete-form-{{ $post->id }}"
-                                            action="{{ route('posts.destroy', ['post' => $post]) }}" method="POST"
-                                            style="display: none;">
-                                            @csrf
-                                            @method('DELETE')
-                                        </form>
-                                    </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <a href="{{ route('posts.edit', ['post' => $post]) }}"
+                                                class="text-indigo-600 hover:text-indigo-900">Edit</a>
+
+                                            <a href="{{ route('posts.destroy', ['post' => $post]) }}"
+                                                class="text-indigo-600 hover:text-indigo-900"
+                                                style="padding-left: 15px; color: red"
+                                                onclick="event.preventDefault(); document.getElementById('delete-form-{{ $post->id }}').submit(); return confirm('Are you sure you want to remove this post?')">
+                                                delete
+                                            </a>
+                                            <form id="delete-form-{{ $post->id }}"
+                                                action="{{ route('posts.destroy', ['post' => $post]) }}"
+                                                method="POST" style="display: none;">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
+                                        </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>
