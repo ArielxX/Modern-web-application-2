@@ -12,7 +12,7 @@
 
             <input type="file" name="image">
 
-            <div style="align-items: left">
+            <div style="align-items: left; padding-top: 20px">
                 <h2>Tags</h2>
                 <fieldset>
                     @if (sizeof($errors) > 0)

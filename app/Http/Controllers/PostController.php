@@ -26,20 +26,30 @@ class PostController extends Controller
 
     public function store(CreatePostRequest $request)
     {
-        $request = $request->validated();
-        $tags = $request['tags'];
-        unset($request['tags']);
+        $validatedRequest = $request->validated();
+        $validatedRequest['author_id'] = Auth::user()->id;
         $tagList = [];
 
-        foreach ($tags as $tagName) {
-            $tag = Tag::updateOrCreate(['name' => $tagName]);
-            if (!in_array($tag->id, $tagList)) {
-                array_push($tagList, $tag->id);
+        if (isset($validatedRequest['tags'])) {
+            $tags = $validatedRequest['tags'];
+            unset($validatedRequest['tags']);
+
+            foreach ($tags as $tagName) {
+                $tag = Tag::updateOrCreate(['name' => $tagName]);
+                if (!in_array($tag->id, $tagList)) {
+                    array_push($tagList, $tag->id);
+                }
             }
         }
 
-        $request['author_id'] = Auth::user()->id;
-        $post = Post::create($request);
+        $post = Post::create($validatedRequest);
+
+        if ($request->hasFile('image')) {
+            if ($post->getMedia('images')->count() > 0) {
+                $post->deleteMedia($post->media->last()->id);
+            }
+            $post->addMediaFromRequest('image')->toMediaCollection('images');
+        }
 
         $post->tags()->attach($tagList);
 
@@ -73,14 +83,16 @@ class PostController extends Controller
         }
         $request = $request->validated();
 
-        $tags = $request['tags'];
-        unset($request['tags']);
         $tagList = [];
+        if (isset($request['tags'])) {
+            $tags = $request['tags'];
+            unset($request['tags']);
 
-        foreach ($tags as $tagName) {
-            $tag = Tag::updateOrCreate(['name' => $tagName]);
-            if (!in_array($tag->id, $tagList)) {
-                array_push($tagList, $tag->id);
+            foreach ($tags as $tagName) {
+                $tag = Tag::updateOrCreate(['name' => $tagName]);
+                if (!in_array($tag->id, $tagList)) {
+                    array_push($tagList, $tag->id);
+                }
             }
         }
 
