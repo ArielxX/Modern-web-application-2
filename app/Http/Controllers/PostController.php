@@ -36,7 +36,7 @@ class PostController extends Controller
 
             foreach ($tags as $tagName) {
                 $tag = Tag::updateOrCreate(['name' => $tagName]);
-                if (!in_array($tag->id, $tagList)) {
+                if (! in_array($tag->id, $tagList)) {
                     array_push($tagList, $tag->id);
                 }
             }
@@ -90,7 +90,7 @@ class PostController extends Controller
 
             foreach ($tags as $tagName) {
                 $tag = Tag::updateOrCreate(['name' => $tagName]);
-                if (!in_array($tag->id, $tagList)) {
+                if (! in_array($tag->id, $tagList)) {
                     array_push($tagList, $tag->id);
                 }
             }
