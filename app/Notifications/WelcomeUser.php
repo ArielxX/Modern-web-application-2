@@ -25,7 +25,7 @@ class WelcomeUser extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->greeting('Hello and welcome ' . $notifiable->name)
+            ->greeting('Hello and welcome '.$notifiable->name)
             ->line('Thank you for join to my blog. Here everybody can publish any post. So do not miss your opportunity to share everything that goes through your head ')
             ->action('Here you can see the current posts', route('welcome'))
             ->line('Thank you for using our application!')
