@@ -28,4 +28,4 @@ Route::resource('users', UserController::class);
 
 Route::get('health', HealthCheckResultsController::class);
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
