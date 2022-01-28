@@ -17,7 +17,7 @@ use Spatie\Health\Http\Controllers\HealthCheckResultsController;
 |
 */
 
-Route::get('/', WelcomeController::class);
+Route::get('/', WelcomeController::class)->name('welcome');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -28,4 +28,4 @@ Route::resource('users', UserController::class);
 
 Route::get('health', HealthCheckResultsController::class);
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
